@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.scss';
-import IconTheme from "./Components/Icons/IconTheme";
+import IconTheme from "./Components/Icons/Theme/IconTheme";
 
 function App() {
 	return (
 			<div className="main">
-				<IconTheme/>
+				{/*<div className={'main-block'}>*/}
+				{/*	<IconTheme/>*/}
+				{/*</div>*/}
 			</div>
 	);
 }
