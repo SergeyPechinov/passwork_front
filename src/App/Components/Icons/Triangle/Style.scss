@@ -1,0 +1,16 @@
+@import "./../../../Constants/Style/Main";
+
+.icon-triangle {
+  cursor: pointer;
+
+  &__path {
+    @include transition((stroke, fill));
+  }
+
+  &:hover {
+    .icon-triangle__path {
+      fill: $color_blue;
+      stroke: $color_blue;
+    }
+  }
+}

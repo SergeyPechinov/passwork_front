@@ -1,0 +1,15 @@
+@import "./../../../Constants/Style/Main";
+
+.icon-arrow {
+  cursor: pointer;
+
+  &__path {
+    @include transition(stroke);
+  }
+
+  &:hover {
+    .icon-arrow__path {
+      stroke: $color_blue;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import "./../../../Constants/Style/Main";
+
+.icon-search {
+  cursor: pointer;
+
+  &__path,
+  &__circle {
+    @include transition(stroke);
+  }
+
+  &:hover {
+    .icon-search {
+      &__path,
+      &__circle {
+        stroke: $color_blue;
+      }
+    }
+  }
+}
