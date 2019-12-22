@@ -1,0 +1,25 @@
+@import "./../../Constants/Style/Main";
+
+.icon-theme {
+  cursor: pointer;
+
+  &__path {
+    @include transition(fill);
+  }
+
+  &__circle {
+    @include transition(stroke);
+  }
+
+  &:hover {
+    .icon-theme {
+      &__path {
+        fill: $color_blue_light;
+      }
+
+      &__circle {
+        stroke: $color_blue;
+      }
+    }
+  }
+}
