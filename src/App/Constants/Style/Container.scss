@@ -1,0 +1,19 @@
+@import "Mixins";
+@import "Breakppoints";
+
+@mixin container {
+  box-sizing: border-box;
+  padding: 0 10px;
+
+  @include media_interval($breakpoint_mobile, $breakpoint_tablet) {
+    padding: 0 20px;
+  }
+
+  @include media_interval($breakpoint_tablet, 0) {
+    padding: 0 40px;
+  }
+}
+
+.container {
+  @include container;
+}

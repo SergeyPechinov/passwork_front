@@ -1,19 +1,7 @@
 @import "./Constants/Style/Main";
 
-.main {
+.body {
+  min-height: 700px;
   height: 100vh;
-  width: 100vw;
   background-color: $color_gary_light_extra;
-  display: flex;
-  align-items: center;
 }
-
-//.main-block {
-//  width: 60px;
-//  height: 60px;
-//  position: relative;
-//  left: 10px;
-//  top: 10px;
-//  .icon-theme {
-//  }
-//}

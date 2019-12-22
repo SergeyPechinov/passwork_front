@@ -1,5 +1,16 @@
 @import "Const";
 
+//MEDIA
+@mixin media_interval($min, $max) {
+  @if $max == 0 {
+    $max: 9999px;
+  }
+
+  @media (min-width: ($min + 1px)) and (max-width: $max) {
+    @content;
+  }
+}
+
 //TRANSITION
 @mixin transition($properties: all, $duration: $transition_duration, $easing: $transition_easing) {
   $transitionList: '';
