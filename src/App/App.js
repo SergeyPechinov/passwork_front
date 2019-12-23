@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import {Route, Switch} from 'react-router-dom';
-import {router} from './../Router/index.js';
+import {router} from '../Router/index.js';
 import Header from "./Components/Header/Index";
 import Footer from "./Components/Footer/Index";
 

@@ -1,4 +1,4 @@
-import Main from "../App/Containers/Main/Index.jsx";
+import Main from "../App/Containers/Main/Index";
 
 export const router = [
 	{
