@@ -7,12 +7,14 @@ import Footer from "./Components/Footer/Index";
 
 function App() {
 	return (
-			<div className="body">
+			<div className="body container">
 				<Header/>
 
-				<Switch>
-					{router.map((props, index) => <Route key={index} {...props}/>)}
-				</Switch>
+				<div className="body__inner">
+					<Switch>
+						{router.map((props, index) => <Route key={index} {...props}/>)}
+					</Switch>
+				</div>
 
 				<Footer/>
 			</div>

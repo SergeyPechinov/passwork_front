@@ -1,7 +1,17 @@
 @import "./Constants/Style/Main";
 
 .body {
-  min-height: 700px;
+  box-sizing: border-box;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  min-height: 600px;
   height: 100vh;
   background-color: $color_gary_light_extra;
+
+  &__inner {
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba($color_black, 0.25);
+    background-color: $color_gary_light;
+  }
 }

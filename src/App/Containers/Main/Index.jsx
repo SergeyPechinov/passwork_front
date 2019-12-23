@@ -8,6 +8,7 @@ class Main extends Component {
 
 	componentDidMount() {
 		this.props.setLanguage('en');
+		console.log(navigator.language)
 	}
 
 	render() {
