@@ -1,0 +1,48 @@
+@import "./../../Constants/Style/Main";
+
+.button {
+  margin-top: 200px;
+  margin-left: 200px;
+
+  display: inline-flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 10px 0;
+  min-width: 180px;
+  min-height: 40px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  font-family: $font_default;
+  font-size: 16px;
+  color: $color_gray_light_extra;
+  @include transition(background-color);
+
+  &--blue {
+    background-color: $color_blue_light;
+
+    &:hover,
+    &:focus {
+      background-color: $color_blue;
+    }
+
+    &:active {
+      background-color: $color_blue_dark;
+    }
+  }
+
+  &--red {
+    background-color: $color_red_dark;
+
+    &:hover,
+    &:focus {
+      background-color: $color_red;
+    }
+
+    &:active {
+      background-color: $color_red_light;
+    }
+  }
+}
