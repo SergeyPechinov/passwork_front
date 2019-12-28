@@ -3,14 +3,17 @@
 
 @mixin container {
   box-sizing: border-box;
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 
   @include media_interval($breakpoint_mobile, $breakpoint_tablet) {
-    padding: 0 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   @include media_interval($breakpoint_tablet, 0) {
-    padding: 0 40px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 
