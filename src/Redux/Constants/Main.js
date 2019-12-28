@@ -1,0 +1,2 @@
+export const SET_FIRST_LAUNCH = 'SET_FIRST_LAUNCH';
+export const SET_LANGUAGE = 'SET_LANGUAGE';
