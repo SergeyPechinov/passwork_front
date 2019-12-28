@@ -4,9 +4,12 @@
   box-sizing: border-box;
   padding-top: 80px;
   padding-bottom: 40px;
-  min-height: 600px;
   height: 100vh;
   background-color: $color_gray_light_extra;
+
+  @include media_interval($breakpoint_tablet, 0) {
+    min-height: 600px;
+  }
 
   &__inner {
     height: 100%;

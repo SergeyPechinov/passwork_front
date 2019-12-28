@@ -1,0 +1,54 @@
+@import "./../../Constants/Style/Main";
+
+.change-language-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 12 * 10);
+
+    @include media_interval(480px, $breakpoint_mobile) {
+      width: calc(100% / 12 * 6);
+    }
+
+    @include media_interval($breakpoint_mobile, 0) {
+      max-width: 380px;
+      width: calc(100% / 12 * 4);
+    }
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__button-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  &__button-item {
+    width: 100%;
+    margin-top: 10px;
+
+    @include media_interval(1200px, 0) {
+      margin-right: 5px;
+      width: auto;
+
+      &:last-child {
+        margin: 10px 0 0;
+      }
+    }
+  }
+
+  &__button-bottom {
+    margin-top: 10px;
+  }
+}

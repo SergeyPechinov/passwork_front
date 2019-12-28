@@ -6,7 +6,7 @@ import {
 const initialState = {
 	firstLaunch: true,
 	language: 'en',
-	dictionary: require('./../../../Langs/en.json'),
+	dictionary: require('../../../Dictionary/en.json'),
 };
 
 export function reducerMain(state = initialState, action) {

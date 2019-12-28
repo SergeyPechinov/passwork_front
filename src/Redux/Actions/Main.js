@@ -11,7 +11,7 @@ export const setFirstLaunch = payload => {
 };
 
 export const setLanguage = language => {
-	let dictionary = language === 'ru' ? require('./../../Langs/ru.json') : require('./../../Langs/en.json');
+	let dictionary = language === 'ru' ? require('../../Dictionary/ru.json') : require('../../Dictionary/en.json');
 
 	return {
 		type: SET_LANGUAGE,

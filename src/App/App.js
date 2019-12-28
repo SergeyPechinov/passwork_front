@@ -10,7 +10,6 @@ import ChangeLanguage from "./Containers/ChangeLanguage/Index";
 
 class App extends Component {
 	render() {
-		console.log(this.props.firstLaunch);
 		return (
 				<div className="body container">
 					<Header/>

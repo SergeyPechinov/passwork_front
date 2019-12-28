@@ -42,4 +42,17 @@
       background-color: $color_red_light;
     }
   }
+
+  &--green {
+    background-color: $color_green_dark;
+
+    &:hover,
+    &:focus {
+      background-color: $color_green;
+    }
+
+    &:active {
+      background-color: $color_green_light;
+    }
+  }
 }
