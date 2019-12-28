@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import './Functions';
+import {changeFirstLaunch, changeLanguage} from './Functions';
 import './Style.scss';
 import {connect} from "react-redux";
-import {setLanguage} from "../../../Redux/Actions/Main";
+import {setFirstLaunch, setLanguage} from "../../../Redux/Actions/Main";
 import Button from "../../Components/Button";
 
 class ChangeLanguage extends Component {
@@ -16,17 +16,21 @@ class ChangeLanguage extends Component {
 						<div className="change-language-page__button-list">
 							<Button
 									onClick={() => {
-										this.props.setLanguage('ru')
+										changeLanguage('ru', this.props.setLanguage);
 									}}
 									class={'change-language-page__button-item'} color={'blue'} value={'РУССКИЙ'}/>
 							<Button
 									onClick={() => {
-										this.props.setLanguage('en')
+										changeLanguage('en', this.props.setLanguage);
 									}}
 									class={'change-language-page__button-item'} color={'red'} value={'ENGLISH'}/>
 						</div>
-						<Button class={'change-language-page__button-bottom'} color={'green'}
-						        value={this.props.dictionary.ChangeLanguagePage.ButtonContinue}/>
+						<Button
+								onClick={() => {
+									changeFirstLaunch(false, this.props.setFirstLaunch);
+								}}
+								class={'change-language-page__button-bottom'} color={'green'}
+								value={this.props.dictionary.ChangeLanguagePage.ButtonContinue}/>
 					</div>
 				</div>
 		);
@@ -38,6 +42,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+	setFirstLaunch,
 	setLanguage,
 };
 

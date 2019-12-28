@@ -4,9 +4,13 @@ import {
 } from "../../Constants/Main";
 
 const initialState = {
-	firstLaunch: true,
-	language: 'en',
-	dictionary: require('../../../Dictionary/en.json'),
+	firstLaunch: !localStorage.getItem('firstLaunch'),
+	language:
+			localStorage.getItem('language') === 'ru' ? 'ru' : 'en',
+	dictionary:
+			localStorage.getItem('language') === 'ru' ?
+					require('../../../Dictionary/ru.json') :
+					require('../../../Dictionary/en.json'),
 };
 
 export function reducerMain(state = initialState, action) {
