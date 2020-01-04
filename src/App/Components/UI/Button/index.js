@@ -18,7 +18,7 @@ const Button = props => {
 	copyProps['className'] = `
 							button
 							button--${props.color}
-							${props.class ? props.class : ''}
+							${props.class}
 							${props.wrapper ? 'button--w100' : ''}
 					`;
 
@@ -31,11 +31,25 @@ const Button = props => {
 	return (
 			props.wrapper ?
 					<div
-							className={`${props.classWrapper ? props.classWrapper : ''}`}>
+							className={`${props.classWrapper}`}>
 						{button}</div>
 					:
 					button
 	);
+};
+
+Button.defaultProps = {
+	class: '',
+	classWrapper: '',
+};
+
+Button.propTypes = {
+	link: PropTypes.string,
+	class: PropTypes.string,
+	color: PropTypes.PropTypes.oneOf(['green', 'red', 'blue']).isRequired,
+	value: PropTypes.string,
+	wrapper: PropTypes.bool,
+	classWrapper: PropTypes.string,
 };
 
 export default Button;

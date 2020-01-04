@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import Input from "../../Components/UI/Input";
 import Button from "../../Components/UI/Button";
 import {changeEmail, changePassword} from "./Functions";
-import {number} from 'prop-types';
 import {connect} from "react-redux";
 
 

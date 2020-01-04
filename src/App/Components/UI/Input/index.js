@@ -1,5 +1,6 @@
 import React from "react";
 import './Style.scss';
+import PropTypes from 'prop-types';
 
 const Input = props => {
 	let copyProps = {...props};
@@ -11,23 +12,38 @@ const Input = props => {
 	delete copyProps['errorMessage'];
 	delete copyProps['classWrapper'];
 
-	return (
-			<div className={`input ${props.classWrapper ? props.classWrapper : ''}`}>
-				<input
-						className={`
+	copyProps['className'] = `
 						input__item
-						${props.class ? props.class : ''}
+						${props.class}
 						${props.success ? 'input__item--success' : ''}
 						${props.error ? 'input__item--error' : ''}
-					`}
-						type={props.type ? props.type : 'text'}
-						{...copyProps}
-				/>
+					`;
+
+	copyProps['type'] = props.type;
+
+	return (
+			<div className={`input ${props.classWrapper}`}>
+				<input {...copyProps}/>
 				{props.errorMessage ?
 						<p className="input__error">{props.errorMessage}</p>
 						: null}
 			</div>
 	);
+};
+
+Input.defaultProps = {
+	type: 'text',
+	classWrapper: '',
+	class: '',
+};
+
+Input.propTypes = {
+	type: PropTypes.string,
+	class: PropTypes.string,
+	success: PropTypes.bool,
+	error: PropTypes.bool,
+	errorMessage: PropTypes.string,
+	classWrapper: PropTypes.string,
 };
 
 export default Input;
