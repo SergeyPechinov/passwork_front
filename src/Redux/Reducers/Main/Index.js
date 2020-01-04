@@ -11,6 +11,7 @@ const initialState = {
 			localStorage.getItem('language') === 'ru' ?
 					require('../../../Dictionary/ru.json') :
 					require('../../../Dictionary/en.json'),
+	token: null,
 };
 
 export function reducerMain(state = initialState, action) {
@@ -28,6 +29,5 @@ export function reducerMain(state = initialState, action) {
 			};
 		default:
 			return state;
-
 	}
 }

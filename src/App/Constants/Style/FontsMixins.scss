@@ -1,0 +1,25 @@
+@import "Constants";
+@import "Mixins";
+@import "Breakppoints";
+
+@mixin Roboto_Default {
+  font-family: $font-default;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include media_interval(0, $breakpoint_mobile) {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+@mixin Roboto_Default_Min_Ultra {
+  font-family: $font_default;
+  font-size: 12px;
+  line-height: 14px;
+
+  @include media_interval(0, $breakpoint_mobile) {
+   font-size: 10px;
+    line-height: 12px;
+  }
+}

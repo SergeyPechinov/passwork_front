@@ -1,0 +1,54 @@
+@import "./../../Constants/Style/Main";
+
+.auth-reg-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  &__inner {
+    box-sizing: border-box;
+    padding: 0 5px;
+    max-width: 350px;
+    width: 100%;
+
+    @include media_interval(460px, 0) {
+      max-width: 550px;
+    }
+  }
+
+  &__inputs,
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include media_interval(460px, 0) {
+      margin: 0 -5px;
+    }
+  }
+
+  &__input-wrapper,
+  &__button-wrapper {
+    width: 100%;
+
+    @include media_interval(460px, 0) {
+      box-sizing: border-box;
+      padding: 0 5px;
+      width: 50%;
+    }
+  }
+
+  &__buttons {
+    margin-top: 5px;
+  }
+
+  &__button-wrapper:not(:first-child) {
+    margin-top: 5px;
+
+    @include media_interval(460px, 0) {
+      margin-top: 0;
+    }
+  }
+}
+

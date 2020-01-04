@@ -2,5 +2,13 @@
   "ChangeLanguagePage": {
     "ChangeLanguage": "Пожалуйста, для продолжения выберите язык:",
     "ButtonContinue": "ПРОДОЛЖИТЬ"
+  },
+  "AuthRegPage": {
+    "InputEmail": "Email",
+    "InputName": "Имя",
+    "InputPassword": "Пароль",
+    "InputPasswordConfirm": "Подтверждение пароля",
+    "ButtonEnter": "Вход",
+    "ButtonReg": "Регистрация"
   }
 }

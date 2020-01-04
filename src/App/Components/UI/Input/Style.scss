@@ -1,0 +1,53 @@
+@import "./../../../Constants/Style/Main";
+
+.input {
+  &__item {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid $color_gray;
+    outline: none;
+    background: none;
+    @include Roboto_Default;
+    @include transition((color, border));
+
+    &::placeholder {
+      @include transition(color);
+      color: $color_gray;
+    }
+
+    &:hover {
+      border-bottom: 1px solid $color_blue_light;
+      color: $color_blue_light;
+
+      &::placeholder {
+        color: $color_blue_light;
+      }
+    }
+
+    &:focus {
+      border-bottom: 1px solid $color_blue;
+      color: $color_blue;
+    }
+
+    &--success {
+      color: $color_blue;
+      border-bottom: 1px solid $color_blue;
+    }
+
+    &--error {
+      color: $color_red;
+      border-bottom: 1px solid $color_red;
+
+      &::placeholder {
+        color: $color_red;
+      }
+    }
+  }
+
+  &__error {
+    @include Roboto_Default_Min_Ultra;
+    color: $color_red;
+  }
+}

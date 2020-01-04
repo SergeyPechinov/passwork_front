@@ -1,4 +1,4 @@
-@import "./../../Constants/Style/Main";
+@import "../../../Constants/Style/Main";
 
 .button {
   display: inline-flex;
@@ -12,10 +12,18 @@
   outline: none;
   cursor: pointer;
   background: none;
-  font-family: $font_default;
-  font-size: 16px;
+  text-decoration: none;
+  @include Roboto_Default;
   color: $color_gray_light_extra;
   @include transition(background-color);
+
+  @include media_interval(0, $breakpoint_mobile) {
+    padding: 12px 0;
+  }
+
+  &--w100 {
+    width: 100%;
+  }
 
   &--blue {
     background-color: $color_blue_light;

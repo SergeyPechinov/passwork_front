@@ -2,13 +2,16 @@ import React, {Component} from 'react';
 import './App.scss';
 import {Route, Switch} from 'react-router-dom';
 import {router} from '../Router/Index';
-import Header from "./Components/Header/Index.jsx";
-import Footer from "./Components/Footer/Index.jsx";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 import {connect} from "react-redux";
 import {setLanguage} from "../Redux/Actions/Main";
-import ChangeLanguage from "./Containers/ChangeLanguage/Index";
+import ChangeLanguage from "./Containers/ChangeLanguage";
+import Registration from "./Containers/Registration";
+import Authorization from "./Containers/Authorization";
 
 class App extends Component {
+
 	render() {
 		return (
 				<div className="body container">
@@ -16,9 +19,16 @@ class App extends Component {
 
 					<div className="body__inner">
 						{this.props.firstLaunch ? <ChangeLanguage/> :
-								<Switch>
-									{router.map((props, index) => <Route key={index} {...props}/>)}
-								</Switch>
+								this.props.token ?
+										<Switch>
+											{router.map((props, index) => <Route key={index} {...props}/>)}
+										</Switch>
+										:
+										<Switch>
+											{/*<Registration/>*/}
+											<Route exact={true} path={"/"} component={Authorization}/>
+											<Route path={"/registration"} component={Registration}/>
+										</Switch>
 						}
 					</div>
 
@@ -32,6 +42,7 @@ const mapStateToProps = state => ({
 	firstLaunch: state.main.firstLaunch,
 	language: state.main.language,
 	dictionary: state.main.dictionary,
+	token: state.main.token,
 });
 
 const mapDispatchToProps = {
