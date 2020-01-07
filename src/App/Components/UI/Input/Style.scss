@@ -41,7 +41,16 @@
       border-bottom: 1px solid $color_red;
 
       &::placeholder {
+        color: $color_red_dark;
+      }
+
+      &:focus {
         color: $color_red;
+        border-bottom: 1px solid $color_red;
+
+        &::placeholder {
+          color: $color_red_dark;
+        }
       }
     }
   }

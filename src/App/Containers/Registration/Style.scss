@@ -18,6 +18,12 @@
     }
   }
 
+  &__error {
+    margin-top: 5px;
+    @include Roboto_Default_Min_Ultra;
+    color: $color_red;
+  }
+
   &__inputs,
   &__buttons {
     display: flex;

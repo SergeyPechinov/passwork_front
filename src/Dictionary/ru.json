@@ -9,6 +9,14 @@
     "InputPassword": "Пароль",
     "InputPasswordConfirm": "Подтверждение пароля",
     "ButtonEnter": "Вход",
-    "ButtonReg": "Регистрация"
+    "ButtonReg": "Регистрация",
+
+    "InputEmailError": "Email введен не корректно",
+    "InputNameError": "Минимальная длина 2 символа",
+    "InputPasswordErrorLength": "Минимальная длина 8 символов",
+    "InputPasswordErrorIncorrect": "Пароли не совпадают",
+    "inputPasswordErrorIncorrect": "и пароли не совпадают",
+
+    "RegErrorFetch": "Ошибка отправки данных"
   }
 }

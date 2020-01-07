@@ -1,0 +1,1 @@
+export const urlRegistration = 'auth/registration';

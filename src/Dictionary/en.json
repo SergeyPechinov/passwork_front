@@ -9,6 +9,14 @@
     "InputPassword": "Password",
     "InputPasswordConfirm": "Password confirm",
     "ButtonEnter": "Enter",
-    "ButtonReg": "Registration"
+    "ButtonReg": "Registration",
+
+    "InputEmailError": "Email incorrect",
+    "InputNameError": "Min length 2",
+    "InputPasswordErrorLength": "Min length 8",
+    "InputPasswordErrorIncorrect": "Passwords do not match",
+    "inputPasswordErrorIncorrect": "and passwords do not match",
+
+    "RegErrorFetch": "Error sending data"
   }
 }
