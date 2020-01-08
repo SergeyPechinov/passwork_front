@@ -1,7 +1,6 @@
 import {fetchRequest} from "../../../Fetch";
 import {urlRegistration} from "../../../Fetch/constants";
 import {validatorEmail} from "../../Constants/Js";
-import {Redirect} from 'react-router-dom';
 
 export const changeEmail = (context, event) => {
 	const value = event.target.value;
@@ -41,7 +40,7 @@ export const changePasswordConfirm = (context, event) => {
 	checkPassword(context, password, passwordConfirm);
 };
 
-export const btnRegistration = async (context) => {
+export const btnRegistration = async context => {
 	const
 			email = context.state.inputEmail,
 			name = context.state.inputName,
@@ -93,7 +92,7 @@ const registrationFetch = async (context, data) => {
 						pageError(context, data.message);
 					}
 				} else {
-
+					context.props.history.push('/');
 				}
 			})
 			.catch(error => {

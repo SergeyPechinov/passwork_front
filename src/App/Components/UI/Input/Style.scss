@@ -44,6 +44,15 @@
         color: $color_red_dark;
       }
 
+      &:hover {
+        color: $color_red_light;
+        border-bottom: 1px solid $color_red_light;
+
+        &::placeholder {
+          color: $color_red_light;
+        }
+      }
+
       &:focus {
         color: $color_red;
         border-bottom: 1px solid $color_red;
