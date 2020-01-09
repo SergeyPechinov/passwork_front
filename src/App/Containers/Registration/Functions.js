@@ -80,7 +80,7 @@ export const btnRegistration = async context => {
 };
 
 const registrationFetch = async (context, data) => {
-	return await fetch(fetchRequest(data, urlRegistration))
+	return await fetch(fetchRequest(data, urlRegistration, 'POST'))
 			.then(response => {
 				return response.json();
 			})

@@ -1,4 +1,4 @@
-import {fetchRequest} from "../../../Fetch";
+import {fetchQuery} from "../../../Fetch";
 import {validatorEmail} from "../../Constants/Js";
 
 export const changeEmail = (context, event) => {
@@ -31,37 +31,34 @@ export const btnEnter = async context => {
 	if (validateEmail && validatePassword) {
 		await authorizationFetch(context, {email, password});
 	} else {
-			const emailErrorText = !validateEmail ? context.props.dictionary.AuthRegPage.InputEmailError : '';
-			const passwordErrorText = !validatePassword ? context.props.dictionary.AuthRegPage.InputPasswordErrorLength : '';
+		const emailErrorText = !validateEmail ? context.props.dictionary.AuthRegPage.InputEmailError : '';
+		const passwordErrorText = !validatePassword ? context.props.dictionary.AuthRegPage.InputPasswordErrorLength : '';
 
-			inputsErrors(context, emailErrorText, passwordErrorText);
+		inputsErrors(context, emailErrorText, passwordErrorText);
 	}
 };
 
 const authorizationFetch = async (context, data) => {
-	console.log(data);
-	return await fetch(fetchRequest(data, 'auth'))
-			.then(response => {
-				return response.json();
-			})
-			.then(data => {
-				console.log(data);
-				if (data.success) {
+	const success = data => {
+		if (data.success) {
+			const tokenFull = JSON.stringify(data.tokenFull);
+			context.props.setToken(tokenFull);
+			localStorage.setItem('token', tokenFull);
+		} else {
+			if (data.messages) {
+				inputsErrors(context, data.messages.email, data.messages.password);
+			}
+			if (data.message) {
+				pageError(context, data.message);
+			}
+		}
+	};
 
-				} else {
-					if (data.messages) {
-						inputsErrors(context, data.messages.email, data.messages.password);
-					}
-					if (data.message) {
-						pageError(context, data.message);
-					}
-				}
-			})
-			.catch(error => {
-				if (error) {
-					pageError(context, context.props.dictionary.AuthRegPage.RegErrorFetch);
-				}
-			});
+	const error = () => {
+		pageError(context, context.props.dictionary.AuthRegPage.RegErrorFetch);
+	};
+
+	await fetchQuery({data, url: 'auth'}, success, error);
 };
 
 const inputsErrors = (context, email, password) => {

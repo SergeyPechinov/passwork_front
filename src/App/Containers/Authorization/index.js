@@ -2,11 +2,10 @@ import React, {Component} from "react";
 import Input from "../../Components/UI/Input";
 import Button from "../../Components/UI/Button";
 import {btnEnter, changeEmail, changePassword} from "./Functions";
+import {setToken} from "../../../Redux/Actions/Main";
 import {connect} from "react-redux";
 
-
 class Authorization extends Component {
-
 	state = {
 		inputEmail: '',
 		inputPassword: '',
@@ -81,4 +80,8 @@ const mapStateToProps = state => ({
 	dictionary: state.main.dictionary,
 });
 
-export default connect(mapStateToProps)(Authorization);
+const mapDispatchToProps = {
+	setToken,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authorization);

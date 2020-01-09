@@ -5,12 +5,20 @@ import {router} from '../Router/Index';
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import {connect} from "react-redux";
-import {setLanguage} from "../Redux/Actions/Main";
+import {setLanguage, setToken} from "../Redux/Actions/Main";
 import ChangeLanguage from "./Containers/ChangeLanguage";
 import Registration from "./Containers/Registration";
 import Authorization from "./Containers/Authorization";
 
 class App extends Component {
+	componentDidMount() {
+		const
+				tokenLocalStorage = JSON.parse(localStorage.getItem('token')),
+				tokenState = this.props.token;
+
+		console.log(tokenLocalStorage);
+		// console.log(tokenState);
+	}
 
 	render() {
 		return (
@@ -47,6 +55,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	setLanguage,
+	setToken,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

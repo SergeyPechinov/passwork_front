@@ -1,6 +1,7 @@
 import {
 	SET_FIRST_LAUNCH,
-	SET_LANGUAGE
+	SET_LANGUAGE,
+	SET_TOKEN
 } from "../Constants/Main";
 
 export const setFirstLaunch = payload => {
@@ -19,5 +20,12 @@ export const setLanguage = language => {
 			language,
 			dictionary,
 		},
+	}
+};
+
+export const setToken = token => {
+	return {
+		type: SET_TOKEN,
+		payload: token,
 	}
 };

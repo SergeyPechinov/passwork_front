@@ -1,6 +1,7 @@
 import {
 	SET_FIRST_LAUNCH,
-	SET_LANGUAGE
+	SET_LANGUAGE,
+	SET_TOKEN
 } from "../../Constants/Main";
 
 const initialState = {
@@ -11,10 +12,10 @@ const initialState = {
 			localStorage.getItem('language') === 'ru' ?
 					require('../../../Dictionary/ru.json') :
 					require('../../../Dictionary/en.json'),
-	token: null,
+	token: JSON.parse(localStorage.getItem('token')),
 };
 
-export function reducerMain(state = initialState, action) {
+export const reducerMain = (state = initialState, action) => {
 	switch (action.type) {
 		case SET_FIRST_LAUNCH:
 			return {
@@ -27,7 +28,13 @@ export function reducerMain(state = initialState, action) {
 				language: action.payload.language,
 				dictionary: action.payload.dictionary,
 			};
+		case SET_TOKEN: {
+			return {
+				...state,
+				token: action.payload,
+			}
+		}
 		default:
 			return state;
 	}
-}
+};
