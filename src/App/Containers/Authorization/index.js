@@ -4,6 +4,8 @@ import Button from "../../Components/UI/Button";
 import {btnEnter, changeEmail, changePassword} from "./Functions";
 import {setToken} from "../../../Redux/Actions/Main";
 import {connect} from "react-redux";
+import {loaderHidden, loaderOpen} from "../../../Redux/Actions/Loader";
+
 
 class Authorization extends Component {
 	state = {
@@ -82,6 +84,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	setToken,
+	loaderOpen,
+	loaderHidden,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Authorization);

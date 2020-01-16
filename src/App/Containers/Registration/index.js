@@ -3,7 +3,14 @@ import './Style.scss';
 import Input from "../../Components/UI/Input";
 import Button from "../../Components/UI/Button";
 import {connect} from "react-redux";
-import {btnRegistration, changeEmail, changeName, changePassword, changePasswordConfirm} from "./Functions";
+import {loaderOpen, loaderHidden} from "../../../Redux/Actions/Loader";
+import {
+	btnRegistration,
+	changeEmail,
+	changeName,
+	changePassword,
+	changePasswordConfirm
+} from "./Functions";
 
 class Registration extends Component {
 	state = {
@@ -103,4 +110,9 @@ const mapStateToProps = state => ({
 	dictionary: state.main.dictionary,
 });
 
-export default connect(mapStateToProps)(Registration);
+const mapDispatchToProps = {
+	loaderOpen,
+	loaderHidden
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);

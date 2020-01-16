@@ -80,6 +80,7 @@ export const btnRegistration = async context => {
 };
 
 const registrationFetch = async (context, data) => {
+	context.props.loaderOpen();
 	return await fetch(fetchRequest(data, urlRegistration, 'POST'))
 			.then(response => {
 				return response.json();
@@ -94,6 +95,7 @@ const registrationFetch = async (context, data) => {
 				} else {
 					context.props.history.push('/');
 				}
+				context.props.loaderHidden();
 			})
 			.catch(error => {
 				if (error) {

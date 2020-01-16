@@ -22,6 +22,7 @@ export const changePassword = (context, event) => {
 };
 
 export const btnEnter = async context => {
+	context.props.loaderOpen();
 	const
 			email = context.state.inputEmail,
 			password = context.state.inputPassword,
@@ -36,6 +37,7 @@ export const btnEnter = async context => {
 
 		inputsErrors(context, emailErrorText, passwordErrorText);
 	}
+	context.props.loaderHidden();
 };
 
 const authorizationFetch = async (context, data) => {

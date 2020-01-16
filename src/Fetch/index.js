@@ -1,3 +1,6 @@
+import {store} from "../Redux/Store";
+import {setToken} from "../Redux/Actions/Main";
+
 export const fetchRequest = (body, url, method) => {
 	const
 			address = `http://127.0.0.1:4000/${url}`,
@@ -32,12 +35,12 @@ export const fetchQuery = async (settings, funcSuccess, funcError) => {
 						data.verifyAccess === false &&
 						data.verifyRefresh === true) {
 					localStorage.setItem('token', JSON.stringify(data.tokenFull));
-					console.log('Токен обнвлен!');
+					store.dispatch(setToken(data.tokenFull));
 					fetchQuery(settings, funcSuccess, funcError);
-				} else if (data.verifyRefresh === true) {
-					localStorage.setItem('token', '');
+				} else if (data.verifyRefresh === false) {
+					localStorage.setItem('token', null);
+					store.dispatch(setToken(null));
 				} else {
-					console.log('Токен заебись!');
 					funcSuccess(data);
 				}
 			})

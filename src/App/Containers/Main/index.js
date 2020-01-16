@@ -3,11 +3,10 @@ import './Style.scss';
 import './Functions.js';
 import Button from "../../Components/UI/Button";
 import {fetchQuery} from "../../../Fetch";
+import {connect} from "react-redux";
 
 class Main extends Component {
-
 	btnClick = async () => {
-		console.log('btn test!');
 		const data = {
 			email: 'qwe@qwe.qwe',
 		};
@@ -25,9 +24,16 @@ class Main extends Component {
 		return (
 				<div className="main container">
 					<Button onClick={this.btnClick} color={'green'} value={'Test'}/>
+					<p>{this.props.token.access}</p>
+					<p>{this.props.dictionary.AuthRegPage.InputPasswordErrorIncorrect}</p>
 				</div>
 		)
 	}
 }
 
-export default Main;
+const mapStateToProps = state => ({
+	dictionary: state.main.dictionary,
+	token: state.main.token,
+});
+
+export default connect(mapStateToProps)(Main);

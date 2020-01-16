@@ -1,0 +1,102 @@
+@import "./../../../Constants/Style/Main";
+
+@keyframes animate_opacity_loader {
+  from {
+    opacity: 0.01;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@keyframes animate_opacity_hidden {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.01;
+  }
+}
+
+@keyframes animate_item {
+  from, to {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color_black, 0.6);
+
+  &--open,
+  &--close {
+    animation-duration: 0.1s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+  }
+
+  &--open {
+    animation-name: animate_opacity_loader;
+  }
+
+  &--close {
+    animation-name: animate_opacity_hidden;
+    animation-fill-mode: forwards;
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 160px;
+    height: 16px;
+  }
+
+  &__item {
+    width: 16px;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-name: animate_item;
+
+    &--one {
+      animation-delay: -0.5s;
+    }
+
+    &--two {
+      animation-delay: -0.4s;
+    }
+
+    &--three {
+      animation-delay: -0.3s;
+    }
+
+    &--four {
+      animation-delay: -0.2s;
+    }
+
+    &--five {
+      animation-delay: -0.1s;
+    }
+  }
+}

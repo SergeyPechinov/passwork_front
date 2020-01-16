@@ -9,20 +9,14 @@ import {setLanguage, setToken} from "../Redux/Actions/Main";
 import ChangeLanguage from "./Containers/ChangeLanguage";
 import Registration from "./Containers/Registration";
 import Authorization from "./Containers/Authorization";
+import Loader from "./Components/UI/Loader";
 
 class App extends Component {
-	componentDidMount() {
-		const
-				tokenLocalStorage = JSON.parse(localStorage.getItem('token')),
-				tokenState = this.props.token;
-
-		console.log(tokenLocalStorage);
-		// console.log(tokenState);
-	}
-
 	render() {
 		return (
 				<div className="body container">
+					<Loader/>
+
 					<Header/>
 
 					<div className="body__inner">
@@ -33,7 +27,6 @@ class App extends Component {
 										</Switch>
 										:
 										<Switch>
-											{/*<Registration/>*/}
 											<Route exact={true} path={"/"} component={Authorization}/>
 											<Route path={"/registration"} component={Registration}/>
 										</Switch>
