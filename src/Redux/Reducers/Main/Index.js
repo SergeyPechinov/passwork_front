@@ -1,7 +1,8 @@
 import {
 	SET_FIRST_LAUNCH,
 	SET_LANGUAGE,
-	SET_TOKEN
+	SET_TOKEN,
+	SET_USER_ID
 } from "../../Constants/Main";
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
 					require('../../../Dictionary/ru.json') :
 					require('../../../Dictionary/en.json'),
 	token: JSON.parse(localStorage.getItem('token')),
+	user_id: localStorage.getItem('user_id'),
 };
 
 export const reducerMain = (state = initialState, action) => {
@@ -32,6 +34,12 @@ export const reducerMain = (state = initialState, action) => {
 			return {
 				...state,
 				token: action.payload,
+			}
+		}
+		case SET_USER_ID: {
+			return {
+				...state,
+				user_id: action.payload,
 			}
 		}
 		default:

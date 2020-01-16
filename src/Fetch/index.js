@@ -7,6 +7,7 @@ export const fetchRequest = (body, url, method) => {
 			tokenAccess = JSON.parse(localStorage.getItem('token')) ? JSON.parse(localStorage.getItem('token')).access : '';
 
 	if (typeof body === 'object') {
+		body = {id: store.getState().main.user_id, ...body};
 		body = JSON.stringify(body);
 	}
 

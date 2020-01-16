@@ -43,9 +43,13 @@ export const btnEnter = async context => {
 const authorizationFetch = async (context, data) => {
 	const success = data => {
 		if (data.success) {
-			const tokenFull = JSON.stringify(data.tokenFull);
+			const
+					tokenFull = JSON.stringify(data.tokenFull),
+					userId = data.user_id;
 			context.props.setToken(tokenFull);
+			context.props.setUserId(userId);
 			localStorage.setItem('token', tokenFull);
+			localStorage.setItem('user_id', userId);
 		} else {
 			if (data.messages) {
 				inputsErrors(context, data.messages.email, data.messages.password);

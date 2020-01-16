@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 class Main extends Component {
 	btnClick = async () => {
 		const data = {
-			email: 'qwe@qwe.qwe',
+			ids: 1,
 		};
 
 		await fetchQuery({data, url: 'test'},
