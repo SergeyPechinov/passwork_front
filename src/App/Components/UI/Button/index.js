@@ -11,6 +11,7 @@ const Button = props => {
 	delete copyProps['link'];
 	delete copyProps['class'];
 	delete copyProps['color'];
+	delete copyProps['textColor'];
 	delete copyProps['value'];
 	delete copyProps['wrapper'];
 	delete copyProps['classWrapper'];
@@ -18,6 +19,7 @@ const Button = props => {
 	copyProps['className'] = `
 							button
 							button--${props.color}
+							${props.textColor ? `button--text-${props.textColor}` : ''}
 							${props.class}
 							${props.wrapper ? 'button--w100' : ''}
 					`;
@@ -46,7 +48,8 @@ Button.defaultProps = {
 Button.propTypes = {
 	link: PropTypes.string,
 	class: PropTypes.string,
-	color: PropTypes.PropTypes.oneOf(['green', 'red', 'blue']).isRequired,
+	color: PropTypes.PropTypes.oneOf(['green', 'red', 'blue', 'transparent']).isRequired,
+	textColor: PropTypes.PropTypes.oneOf(['gray']),
 	value: PropTypes.string,
 	wrapper: PropTypes.bool,
 	classWrapper: PropTypes.string,

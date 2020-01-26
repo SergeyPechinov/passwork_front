@@ -24,7 +24,7 @@ class Main extends Component {
 		return (
 				<div className="main container">
 					<Button onClick={this.btnClick} color={'green'} value={'Test'}/>
-					<p>{this.props.token.access}</p>
+					{/*<p>{this.props.token.access}</p>*/}
 					<p>{this.props.dictionary.AuthRegPage.InputPasswordErrorIncorrect}</p>
 				</div>
 		)

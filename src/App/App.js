@@ -10,12 +10,15 @@ import ChangeLanguage from "./Containers/ChangeLanguage";
 import Registration from "./Containers/Registration";
 import Authorization from "./Containers/Authorization";
 import Loader from "./Components/UI/Loader";
+import Sidebar from "./Components/Sidebar";
 
 class App extends Component {
 	render() {
 		return (
 				<div className="body container">
 					<Loader/>
+
+					{this.props.sidebar.open ? <Sidebar class={this.props.sidebar.hidden ? 'sidebar--close' : ''}/> : null}
 
 					<Header/>
 
@@ -44,6 +47,7 @@ const mapStateToProps = state => ({
 	language: state.main.language,
 	dictionary: state.main.dictionary,
 	token: state.main.token,
+	sidebar: state.sidebar,
 });
 
 const mapDispatchToProps = {

@@ -1,7 +1,225 @@
+@import "../../Constants/Style/Main";
+
+@keyframes animate_burger_open_1200-0 {
+  to {
+    left: calc(100% / 4 - 80px);
+  }
+}
+
+@keyframes animate_burger_open_1024-1200 {
+  to {
+    left: calc(100% / 3 - 80px);
+  }
+}
+
+@keyframes animate_burger_open_768-1024 {
+  to {
+    left: calc(100% / 2 - 60px);
+  }
+}
+
+@keyframes animate_burger_open_550-768 {
+  to {
+    left: calc(100% / 3 * 2 - 60px);
+  }
+}
+
+@keyframes animate_burger_open_0-550 {
+  to {
+    left: calc(100% - 60px);
+  }
+}
+
+@keyframes animate_burger_close_1200-0 {
+  from {
+    left: calc(100% / 4 - 80px);
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes animate_burger_close_1024-1200 {
+  from {
+    left: calc(100% / 3 - 80px);
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes animate_burger_close_768-1024 {
+  from {
+    left: calc(100% / 2 - 60px);
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes animate_burger_close_550-768 {
+  from {
+    left: calc(100% / 3 * 2 - 60px);
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes animate_burger_close_0-550 {
+  from {
+    left: calc(100% - 60px);
+  }
+
+  to {
+    left: 0;
+  }
+}
+
 .header {
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
   height: 80px;
+
+  &__burger {
+    position: relative;
+    z-index: 200;
+    left: 0;
+    width: 40px;
+    height: 26px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      &::before,
+      &::after,
+      .header__burger-item {
+        background-color: $color_gray;
+      }
+    }
+
+    &::before,
+    &::after,
+    .header__burger-item {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: $color_gray_dark;
+      @include transition((background-color, opacity));
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      @include transition((background-color, transform));
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+  }
+
+  &__burger--open {
+    animation-name: animate_burger_open_1200-0;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+
+    &:hover {
+      &::before,
+      &::after,
+      .header__burger-item {
+        background-color: $color_gray_light_extra;
+      }
+    }
+
+    &::before,
+    &::after,
+    .header__burger-item {
+      background-color: $color_gray;
+    }
+
+    &::before {
+      transform: rotate(45deg) translateX(17px);
+    }
+
+    &::after {
+      transform: rotate(-45deg) translateX(17px);
+    }
+
+    .header__burger-item {
+      opacity: 0;
+    }
+
+    @include media_interval($breakpoint_tablet, 1200px) {
+      animation-name: animate_burger_open_1024-1200;
+    }
+
+    @include media_interval($breakpoint_mobile, $breakpoint_tablet) {
+      animation-name: animate_burger_open_768-1024;
+    }
+
+    @include media_interval(550px, $breakpoint_mobile) {
+      animation-name: animate_burger_open_550-768;
+    }
+
+    @include media_interval(0, 550px) {
+      animation-name: animate_burger_open_0-550;
+    }
+  }
+
+  &__burger--close {
+    animation-name: animate_burger_close_1200-0;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+
+
+    &::before,
+    &::after {
+      transform: none;
+    }
+
+    .header__burger-item {
+      opacity: 1;
+    }
+
+    @include media_interval($breakpoint_tablet, 1200px) {
+      animation-name: animate_burger_close_1024-1200;
+    }
+
+    @include media_interval($breakpoint_mobile, $breakpoint_tablet) {
+      animation-name: animate_burger_close_768-1024;
+    }
+
+    @include media_interval(550px, $breakpoint_mobile) {
+      animation-name: animate_burger_close_550-768;
+    }
+
+    @include media_interval(0, 550px) {
+      animation-name: animate_burger_close_0-550;
+    }
+  }
+
+  &__burger-item {
+    top: calc(50% - 1px);
+  }
 }

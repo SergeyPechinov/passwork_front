@@ -1,0 +1,176 @@
+@import "../../Constants/Style/Main";
+
+@keyframes animate_open_sidebar_inner {
+  to {
+    left: 0;
+  }
+}
+
+@keyframes animate_close_sidebar_inner-1200-0 {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -25%;
+  }
+}
+
+@keyframes animate_close_sidebar_inner-1024-1200 {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(100% / -3);
+  }
+}
+
+@keyframes animate_close_sidebar_inner-768-1024 {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -50%;
+  }
+}
+
+@keyframes animate_close_sidebar_inner-550-768 {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(100% / -3 * 2);
+  }
+}
+
+@keyframes animate_close_sidebar_inner-0-550 {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes animate_open_sidebar_bg {
+  to {
+    background-color: rgba($color_black, 0.5);
+  }
+}
+
+@keyframes animate_close_sidebar_bg {
+  from {
+    background-color: rgba($color_black, 0.5);
+  }
+
+  to {
+    background-color: rgba($color_black, 0);
+  }
+}
+
+.sidebar {
+  position: absolute;
+  z-index: 90;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &__bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color_black, 0);
+
+    animation-name: animate_open_sidebar_bg;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  }
+
+  &__inner {
+    position: absolute;
+    top: 0;
+    left: -25%;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: 40px 0 40px 40px;
+    height: 100%;
+    width: 25%;
+    overflow: hidden;
+    background-color: $color_blue;
+
+    animation-name: animate_open_sidebar_inner;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+
+    @include transition(left);
+
+    @include media_interval($breakpoint_tablet, 1200px) {
+      width: calc(100% / 3);
+      left: calc(100% / -3);
+    }
+
+    @include media_interval($breakpoint_mobile, $breakpoint_tablet) {
+      width: 50%;
+      left: -50%;
+    }
+
+    @include media_interval(550px, $breakpoint_mobile) {
+      width: calc(100% / 3 * 2);
+      left: calc(100% / -3 * 2);
+    }
+
+    @include media_interval(0, 550px) {
+      width: 100%;
+      left: -100%;
+    }
+  }
+
+  &__menu {
+    max-height: 100%;
+    height: 100%;
+    width: calc(100% + 20px);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &__menu-item {
+    list-style: none;
+    width: calc(100% - 20px);
+  }
+}
+
+.sidebar--close {
+  .sidebar {
+    &__bg {
+      animation-name: animate_close_sidebar_bg;
+    }
+
+    &__inner {
+      animation-name: animate_close_sidebar_inner-1200-0;
+
+      @include media_interval($breakpoint_tablet, 1200px) {
+        animation-name: animate_close_sidebar_inner-1024-1200;
+      }
+
+      @include media_interval($breakpoint_mobile, $breakpoint_tablet) {
+        animation-name: animate_close_sidebar_inner-768-1024;
+      }
+
+      @include media_interval(550px, $breakpoint_mobile) {
+        animation-name: animate_close_sidebar_inner-550-768;
+      }
+
+      @include media_interval(0, 550px) {
+        animation-name: animate_close_sidebar_inner-0-550;
+      }
+    }
+  }
+}

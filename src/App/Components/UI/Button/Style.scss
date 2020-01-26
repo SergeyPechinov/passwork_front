@@ -21,6 +21,22 @@
     padding: 12px 0;
   }
 
+  &.button--transparent {
+    background-color: transparent;
+    min-height: 0;
+    min-width: 0;
+    text-align: left;
+  }
+
+  &--text-gray {
+    color: $color_gray;
+    @include transition(color);
+
+    &:hover {
+      color: $color_green;
+    }
+  }
+
   &--w100 {
     width: 100%;
   }
