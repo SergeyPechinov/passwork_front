@@ -6,6 +6,13 @@ import {sidebarClose, sidebarCloseDone} from "../../../Redux/Actions/Sidebar";
 import {closeSidebar} from "./Functions";
 
 class Sidebar extends Component {
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (this.props.sidebar.open && this.props.sidebar.hidden) {
+			setTimeout(this.props.sidebarCloseDone, 300);
+		}
+	}
+
 	render() {
 		return (
 				<div className={`sidebar ${this.props.class ? this.props.class : ''}`}>
@@ -23,9 +30,13 @@ class Sidebar extends Component {
 	}
 }
 
+const mapStateToProps = state => ({
+	sidebar: state.sidebar,
+});
+
 const mapDispatchToProps = ({
 	sidebarClose,
 	sidebarCloseDone,
 });
 
-export default connect(null, mapDispatchToProps)(Sidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
