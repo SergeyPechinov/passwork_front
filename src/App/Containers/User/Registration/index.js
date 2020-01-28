@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import './Style.scss';
-import Input from "../../Components/UI/Input";
-import Button from "../../Components/UI/Button";
+import Input from "../../../Components/UI/Input";
+import Button from "../../../Components/UI/Button";
 import {connect} from "react-redux";
-import {loaderOpen, loaderHidden} from "../../../Redux/Actions/Loader";
+import {loaderOpen, loaderHidden} from "../../../../Redux/Actions/Loader";
 import {
 	btnRegistration,
 	changeEmail,

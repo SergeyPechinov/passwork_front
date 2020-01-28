@@ -1,6 +1,6 @@
-import {fetchRequest} from "../../../Fetch";
-import {urlRegistration} from "../../../Fetch/constants";
-import {validatorEmail} from "../../Constants/Js";
+import {fetchRequest} from "../../../../Fetch";
+import {urlRegistration} from "../../../../Fetch/constants";
+import {validatorEmail} from "../../../Constants/Js";
 
 export const changeEmail = (context, event) => {
 	const value = event.target.value;

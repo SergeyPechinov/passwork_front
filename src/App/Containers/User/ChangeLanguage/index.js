@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import {changeFirstLaunch, changeLanguage} from './Functions';
 import './Style.scss';
 import {connect} from "react-redux";
-import {setFirstLaunch, setLanguage} from "../../../Redux/Actions/Main";
-import Button from "../../Components/UI/Button";
+import {setFirstLaunch, setLanguage} from "../../../../Redux/Actions/Main";
+import Button from "../../../Components/UI/Button";
 
 class ChangeLanguage extends Component {
 	render() {

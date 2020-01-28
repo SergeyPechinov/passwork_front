@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import Input from "../../Components/UI/Input";
-import Button from "../../Components/UI/Button";
+import Input from "../../../Components/UI/Input";
+import Button from "../../../Components/UI/Button";
 import {btnEnter, changeEmail, changePassword} from "./Functions";
-import {setToken, setUserId} from "../../../Redux/Actions/Main";
+import {setToken, setUserId} from "../../../../Redux/Actions/Main";
 import {connect} from "react-redux";
-import {loaderHidden, loaderOpen} from "../../../Redux/Actions/Loader";
+import {loaderHidden, loaderOpen} from "../../../../Redux/Actions/Loader";
 
 
 class Authorization extends Component {

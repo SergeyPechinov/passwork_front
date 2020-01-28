@@ -6,9 +6,9 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import {connect} from "react-redux";
 import {setLanguage, setToken} from "../Redux/Actions/Main";
-import ChangeLanguage from "./Containers/ChangeLanguage";
-import Registration from "./Containers/Registration";
-import Authorization from "./Containers/Authorization";
+import ChangeLanguage from "./Containers/User/ChangeLanguage";
+import Registration from "./Containers/User/Registration";
+import Authorization from "./Containers/User/Authorization";
 import Loader from "./Components/UI/Loader";
 import Sidebar from "./Components/Sidebar";
 
@@ -32,6 +32,7 @@ class App extends Component {
 										<Switch>
 											<Route exact={true} path={"/"} component={Authorization}/>
 											<Route path={"/registration"} component={Registration}/>
+											<Route component={Authorization}/>
 										</Switch>
 						}
 					</div>

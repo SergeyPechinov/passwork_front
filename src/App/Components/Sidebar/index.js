@@ -20,7 +20,7 @@ class Sidebar extends Component {
 						<nav className="sidebar__inner">
 							<ul className="sidebar__menu">
 								<li className="sidebar__menu-item">
-									<Button color={"transparent"} textColor={"gray"} value={'Добавить пароль'}/>
+									<Button onClick={this.props.sidebarClose} link={'/password_add'} color={"transparent"} textColor={"gray"} value={'Добавить пароль'}/>
 								</li>
 							</ul>
 						</nav>

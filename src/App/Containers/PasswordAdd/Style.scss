@@ -1,0 +1,17 @@
+.password-add {
+  padding-top: 50px;
+
+  &__title {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+}
+
+.password-add-form {
+  margin: 50px auto;
+  max-width: 500px;
+
+  &__button {
+    margin-top: 20px;
+  }
+}
