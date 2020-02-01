@@ -1,4 +1,7 @@
 {
+  "Common": {
+    "AddPassword": "Add password"
+  },
   "ChangeLanguagePage": {
     "ChangeLanguage": "Please, select language to continue:",
     "ButtonContinue": "CONTINUE"
@@ -18,5 +21,11 @@
     "inputPasswordErrorIncorrect": "and passwords do not match",
 
     "RegErrorFetch": "Error sending data"
+  },
+  "AddPasswordPage": {
+    "Title": "Add Password",
+    "InputNamePassword": "Password name",
+    "InputSite": "Site",
+    "InputPassword": "Password"
   }
 }

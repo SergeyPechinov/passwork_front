@@ -49,5 +49,5 @@ export const fetchQuery = async (settings, funcSuccess, funcError) => {
 				if (error) {
 					funcError(error);
 				}
-			})
+			});
 };

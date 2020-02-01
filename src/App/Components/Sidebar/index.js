@@ -20,7 +20,12 @@ class Sidebar extends Component {
 						<nav className="sidebar__inner">
 							<ul className="sidebar__menu">
 								<li className="sidebar__menu-item">
-									<Button onClick={this.props.sidebarClose} link={'/password_add'} color={"transparent"} textColor={"gray"} value={'Добавить пароль'}/>
+									<Button
+											onClick={this.props.sidebarClose}
+											link={'/password_add'}
+											color={"transparent"}
+											textColor={"gray"}
+											value={this.props.dictionary.Common.AddPassword}/>
 								</li>
 							</ul>
 						</nav>
@@ -32,6 +37,7 @@ class Sidebar extends Component {
 
 const mapStateToProps = state => ({
 	sidebar: state.sidebar,
+	dictionary: state.main.dictionary,
 });
 
 const mapDispatchToProps = ({

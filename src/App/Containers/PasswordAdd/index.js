@@ -2,74 +2,68 @@ import React, {Component} from "react";
 import './Style.scss';
 import Input from "../../Components/UI/Input";
 import Button from "../../Components/UI/Button";
+import {addPassword, handleInputNamePassword, handleInputNameSite, handleInputPassword} from './Functions';
+import {connect} from 'react-redux';
 
 class PasswordAdd extends Component {
 	state = {
-		valueInputNameSite: '',
 		valueInputNamePassword: '',
+		valueInputNameSite: '',
 		valueInputPassword: '',
 
 		successInputNameSite: false,
 		successInputNamePassword: false,
 		successInputPassword: false,
-	};
 
-	handleInputNameSite = (event) => {
-		this.setState({
-			valueInputNameSite: event.target.value,
-			successInputNameSite: event.target.value.length > 3,
-		});
-	};
-
-	handleInputNamePassword = (event) => {
-		this.setState({
-			valueInputNamePassword: event.target.value,
-			successInputNamePassword: event.target.value.length > 0,
-		})
-	};
-
-	handleInputPassword = (event) => {
-		this.setState({
-			valueInputPassword: event.target.value,
-			successInputPassword: event.target.value.length > 0,
-		})
+		buttonDisabled: false,
 	};
 
 	render() {
 		return (
 				<div className={'password-add container'}>
-					<h2 className={'password-add__title title title--2'}>Добавить пароль</h2>
+					<h2 className={'password-add__title title title--2'}>{this.props.dictionary.AddPasswordPage.Title}</h2>
 					<div className="password-add-form">
 						<Input class={'password-add-form__input'}
-						       onChange={(event) => {
-							       this.handleInputNameSite(event);
-						       }}
-						       value={this.state.valueInputNameSite}
-						       success={this.state.successInputNameSite}
-						       error={!this.state.successInputNameSite}
-						       placeholder={'Сайт'}/>
-						<Input class={'password-add-form__input'}
-						       onChange={(event) => {
-							       this.handleInputNamePassword(event);
+						       onChange={async (event) => {
+							       await handleInputNamePassword(this, event);
 						       }}
 						       value={this.state.valueInputNamePassword}
 						       success={this.state.successInputNamePassword}
 						       error={!this.state.successInputNamePassword}
-						       placeholder={'Название пароля'}/>
+						       placeholder={this.props.dictionary.AddPasswordPage.InputNamePassword}/>
 						<Input class={'password-add-form__input'}
-						       onChange={(event) => {
-							       this.handleInputPassword(event);
+						       onChange={async (event) => {
+							       await handleInputNameSite(this, event);
+						       }}
+						       value={this.state.valueInputNameSite}
+						       success={this.state.successInputNameSite}
+						       error={!this.state.successInputNameSite}
+						       placeholder={this.props.dictionary.AddPasswordPage.InputSite}/>
+						<Input class={'password-add-form__input'}
+						       onChange={async (event) => {
+							       await handleInputPassword(this, event);
 						       }}
 						       value={this.state.valueInputPassword}
 						       success={this.state.successInputPassword}
 						       error={!this.state.successInputPassword}
-						       placeholder={'Проль'}/>
+						       placeholder={this.props.dictionary.AddPasswordPage.InputPassword}/>
 
-						<Button class={'password-add-form__button'} color={'green'} value={'Добавить'}/>
+						<Button class={'password-add-form__button'}
+						        color={'green'}
+						        disabled={this.state.buttonDisabled}
+						        onClick={async () => {
+						        	await addPassword(this);
+						        }}
+						        value={this.props.dictionary.Common.AddPassword}/>
 					</div>
 				</div>
 		);
 	}
 }
 
-export default PasswordAdd;
+const mapStateToProps = state => ({
+	dictionary: state.main.dictionary,
+	id: state.main.user_id,
+});
+
+export default connect(mapStateToProps)(PasswordAdd);

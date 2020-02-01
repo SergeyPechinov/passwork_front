@@ -1,4 +1,7 @@
 {
+  "Common": {
+    "AddPassword": "Добавить пароль"
+  },
   "ChangeLanguagePage": {
     "ChangeLanguage": "Пожалуйста, для продолжения выберите язык:",
     "ButtonContinue": "ПРОДОЛЖИТЬ"
@@ -18,5 +21,11 @@
     "inputPasswordErrorIncorrect": "и пароли не совпадают",
 
     "RegErrorFetch": "Ошибка отправки данных"
+  },
+  "AddPasswordPage": {
+    "Title": "Добавить пароль",
+    "InputNamePassword": "Название пароля",
+    "InputSite": "Сайт",
+    "InputPassword": "Пароль"
   }
 }
