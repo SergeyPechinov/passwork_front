@@ -1,0 +1,9 @@
+@import "../../../../Constants/Style/Main";
+
+.icon-delete {
+  @include transition(transform);
+
+  &__path {
+    @include transition(stroke);
+  }
+}

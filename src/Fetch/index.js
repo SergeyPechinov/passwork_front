@@ -1,13 +1,13 @@
 import {store} from "../Redux/Store";
 import {setToken} from "../Redux/Actions/Main";
 
-export const fetchRequest = (body, url, method) => {
+export const fetchRequest = (body = {}, url, method) => {
 	const
 			address = `http://127.0.0.1:4000/${url}`,
 			tokenAccess = JSON.parse(localStorage.getItem('token')) ? JSON.parse(localStorage.getItem('token')).access : '';
 
 	if (typeof body === 'object') {
-		body = {id: store.getState().main.user_id, ...body};
+		body = {...body, id: store.getState().main.user_id};
 		body = JSON.stringify(body);
 	}
 
@@ -21,7 +21,9 @@ export const fetchRequest = (body, url, method) => {
 	});
 };
 
-export const fetchQuery = async (settings, funcSuccess, funcError) => {
+export const fetchQuery = async (settings, funcSuccess, funcError = (error) => {
+	console.log(error);
+}) => {
 	const
 			body = settings.data,
 			url = settings.url,
@@ -37,12 +39,17 @@ export const fetchQuery = async (settings, funcSuccess, funcError) => {
 						data.verifyRefresh === true) {
 					localStorage.setItem('token', JSON.stringify(data.tokenFull));
 					store.dispatch(setToken(data.tokenFull));
+					delete settings['context'];
 					fetchQuery(settings, funcSuccess, funcError);
 				} else if (data.verifyRefresh === false) {
 					localStorage.setItem('token', null);
 					store.dispatch(setToken(null));
 				} else {
-					funcSuccess(data);
+					if (settings.context) {
+						funcSuccess(data, settings.context);
+					} else {
+						funcSuccess(data);
+					}
 				}
 			})
 			.catch(error => {

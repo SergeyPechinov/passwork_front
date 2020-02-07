@@ -1,0 +1,5 @@
+@import "../../../../Constants/Style/Main";
+
+.icon-apply__path {
+  @include transition(stroke);
+}

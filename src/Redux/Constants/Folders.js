@@ -1,0 +1,1 @@
+export const FOLDERS_GET = 'FOLDERS_GET';

@@ -1,10 +1,11 @@
 import {fetchQuery} from "../../../Fetch";
-import {urlAddPassword} from "../../../Fetch/constants";
+import {urlAddFolders, urlAddPassword, urlGetFolders} from "../../../Fetch/constants";
 
 export const handleInputNamePassword = async (context, event) => {
 	await context.setState({
 		valueInputNamePassword: event.target.value,
 		successInputNamePassword: event.target.value.length > 0,
+		messageInputNamePassword: '',
 	});
 	buttonDisabled(context);
 };
@@ -13,6 +14,7 @@ export const handleInputNameSite = async (context, event) => {
 	await context.setState({
 		valueInputNameSite: event.target.value,
 		successInputNameSite: event.target.value.length > 3,
+		messageInputNameSite: '',
 	});
 	buttonDisabled(context);
 };
@@ -21,6 +23,7 @@ export const handleInputPassword = async (context, event) => {
 	await context.setState({
 		valueInputPassword: event.target.value,
 		successInputPassword: event.target.value.length > 0,
+		messageInputPassword: '',
 	});
 	buttonDisabled(context);
 };
@@ -32,23 +35,25 @@ export const addPassword = async context => {
 		password: context.state.valueInputPassword,
 	};
 
-	// console.log(context.props.id)
-	console.log(data);
-	console.log(urlAddPassword);
-
-	await fetchQuery({data, url: urlAddPassword}, addPasswordSuccess, addPasswordError);
+	await fetchQuery({data, url: urlAddPassword, context}, addPasswordSuccess);
 };
 
-const addPasswordSuccess = data => {
-	console.log(data);
-};
+const addPasswordSuccess = (data, context) => {
+	if (!data.success) {
+		context.setState({
+			messageInputNameSite: data.messages.nameSite,
+			messageInputNamePassword: data.messages.namePassword,
+			messageInputPassword: data.messages.password,
 
-const addPasswordError = () => {
-	console.log(`error`);
+			successInputNamePassword: !data.messages.namePassword,
+			successInputNameSite: !data.messages.nameSite,
+			successInputPassword: !data.messages.password,
+		});
+	}
 };
 
 const buttonDisabled = context => {
-	// context.setState({
-	// 	buttonDisabled: !(context.state.successInputNamePassword && context.state.valueInputNameSite && context.state.valueInputPassword),
-	// });
+	context.setState({
+		buttonDisabled: !(context.state.successInputNamePassword && context.state.successInputNameSite && context.state.successInputPassword),
+	});
 };

@@ -1,0 +1,99 @@
+@import "../../../Constants/Style/Main";
+
+.password-folders {
+  box-sizing: border-box;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button-add {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      .icon-plus {
+        transform: rotate(90deg);
+
+        &__path {
+          stroke: $color_blue;
+        }
+      }
+    }
+  }
+
+  //инпут добавления папки
+  &__add-row {
+    position: relative;
+  }
+
+  &__input-add {
+    padding-right: 30px;
+  }
+
+  &__input-add-remove {
+    position: absolute;
+    top: calc(50% - 10px);
+    right: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      .icon-delete {
+        transform: rotate(90deg);
+
+        &__path {
+          stroke: $color_blue;
+        }
+      }
+    }
+  }
+
+  &__input-add-add {
+    position: absolute;
+    top: calc(50% - 7px);
+    right: 25px;
+    width: 14px;
+    height: 14px;
+
+    &:hover,
+    &:focus {
+      .icon-apply__path {
+        stroke: $color_blue;
+      }
+    }
+  }
+
+  &__folders-wrapper {
+    margin-top: 10px;
+    min-height: 200px;
+    border-radius: 5px;
+  }
+
+  &__folders &__folders {
+    margin-left: 10px;
+  }
+
+  &__folders {
+    margin-bottom: -5px;
+  }
+
+  &__folder {
+    margin-bottom: 5px;
+  }
+
+  &__folder-icon + &__folder-name {
+    margin-left: 5px;
+  }
+
+  &__folder-name {
+  }
+}
